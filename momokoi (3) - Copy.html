@@ -1821,7 +1821,6 @@ SPR d
 11110000
 01001000
 NAME mike
-DLG 8
 POS 2 8,9
 BLIP e
 
@@ -3000,6 +2999,17 @@ ITM v
 00011000
 NAME coolsword
 
+ITM w
+01111110
+01000010
+01111110
+01010010
+01010010
+01010010
+01000010
+01111110
+NAME boatticket
+
 DLG 0
 """
 Pete: Good luck traveler! {
@@ -3049,17 +3059,6 @@ NAME exit dialog 1
 DLG 7
 Pete's House
 NAME sprite c dialog
-
-DLG 8
-"""
-Mike: Hey there Traveler! Need a ride? I could get you to that Island for 3 Gravellas! {
-  - {item "b"} == 3 ?
-    I see you got 3 Gravellas- I'll take you over now!
-  - else ?
-    ...
-}
-"""
-NAME mike dialog
 
 DLG 9
 You found a Gravella!
@@ -3118,10 +3117,15 @@ NAME sprite 15 dialog
 DLG a
 """
 {
-  - {item "b"} >= 3 ?
-    {property locked false}Mike: Hey there Traveler! I'll take those 3 Gravellas and send you over to that Island.{item "b" {{item "b"} - 3}}
+  - {item "w"} >= 1 ?
+    {property locked false}Mike: Hey there Traveler! I see you have a boat ticket - I'll send you over to that Island!
   - else ?
-    {property locked true}Mike: Hey there Traveler! Need a ride? I could get you to that Island for 3 Gravellas! 
+    {property locked true}{
+      - {item "b"} >= 3 ?
+        Mike: Hey there Traveler! I'll take those 3 Gravellas and send you over to that Island. Oh and here's a boat ticket if you somehow need to go back on that small island.{item "w" {{item "w"} + 1}}{property locked false}{item "b" {{item "b"} - 3}}
+      - else ?
+        Mike: Hey there Traveler! Need a ride? I could get you to that Island for 3 Gravellas! You just pay for it and I'll give you a boat ticket. 
+    }
 }
 """
 NAME locked exit 1
@@ -3184,7 +3188,8 @@ DLG m
 A Bookshelf. 
 The bookshelf is titled "creatures from F to J". 
 Taking out one of the books it reads: 
-The Jinkmic is a small rat creature with grassy fur and leafy ears. They common throughout the continent and found in trees or urban places. They are extremely smart and able lost objects in the woods when trained. When feeling threatened, they uses their magic fur to launch  grass  needles to the aggressor. They are weak to fire and dark magic.
+The Jinkmic is a small rat creature with grassy fur and leafy ears. They are common throughout the continent and found in trees or urban places. They are extremely smart and are able to find lost objects in the woods when trained. When feeling threatened, they use their magic fur to launch grass needles to the aggressor. They are weak to fire and dark magic.
+
 """
 NAME sprite m dialog
 
@@ -3193,7 +3198,8 @@ DLG n
 A Bookshelf. 
 The bookshelf is titled "creatures from F to J". 
 Taking out one of the books it reads: 
-The Jinkmic is a small rat creature with grassy fur and leafy ears. They common throughout the continent and found in trees or urban places. They are extremely smart and able lost objects in the woods when trained. When feeling threatened, they uses their magic fur to launch  grass  needles to the aggressor. They are weak to fire and dark magic.
+The Jinkmic is a small rat creature with grassy fur and leafy ears. They are common throughout the continent and found in trees or urban places. They are extremely smart and are able to find lost objects in the woods when trained. When feeling threatened, they use their magic fur to launch grass needles to the aggressor. They are weak to fire and dark magic.
+
 """
 NAME sprite l dialog
 
@@ -3201,7 +3207,8 @@ DLG o
 """
 A Bookshelf. 
 The bookshelf is titled "creatures from K to O". 
-Momokoi, also known a fire fox, will hunt after its wedding ceremony. During this, Momokoi will set trees and plants on fire, particularly those in the northern area, causing massive landscape changes. Momokoi's are weak to the cold. Creature hunters take this into account and create swords enhanced with cooling potions to defeat them. 
+Momokoi, also known as a {wvy}fire fox{/wvy}, will hunt after its wedding ceremony. During this, Momokoi will set trees and plants on fire, particularly those in the northern area, causing massive landscape changes. Momokoi's are weak to the cold. Creature hunters take this into account and create {wvy}swords enhanced with cooling potions{/wvy} to defeat them. 
+
 """
 NAME bookshelf3.1 dialog
 
@@ -3209,7 +3216,8 @@ DLG p
 """
 A Bookshelf. 
 The bookshelf is titled "creatures from K to O". 
-Momokoi, also known a {wvy}fire fox{/wvy}, will hunt after its wedding ceremony. During this, Momokoi will set trees and plants on fire, particularly those in the northern area, causing massive landscape changes. Momokoi's are weak to the cold. Creature hunters take this into account and create {wvy}swords enhanced with cooling potions{/wvy} to defeat them. 
+Momokoi, also known as a {wvy}fire fox{/wvy}, will hunt after its wedding ceremony. During this, Momokoi will set trees and plants on fire, particularly those in the northern area, causing massive landscape changes. Momokoi's are weak to the cold. Creature hunters take this into account and create {wvy}swords enhanced with cooling potions{/wvy} to defeat them. 
+
 """
 NAME bookshelf3.2 dialog
 
@@ -3218,7 +3226,8 @@ DLG q
 A Bookshelf. 
 The bookshelf is titled "creatures from P to T". 
 Taking out one of the books it reads: 
-The Seamama is a water elemental creature with the appearance of a snow white seal.   They have a high intelligence and strong will to protect their children. The emotional bond a Seamama has to its young is known to be one of the strongest in the North. If its child is disturbed, the Seamama will risk its life and hunt down the aggressor. When in the water, Seamama freeze and drown their prey. On land, they are clumsy and slow. Their weakspot varies among individual.
+The Seamama is a water elemental creature with the appearance of a snow white seal. They have a high intelligence and strong will to protect their children. The emotional bond a Seamama has to its young is known to be one of the strongest in the North. If its child is disturbed, the Seamama will risk its life and hunt down the aggressor. When in the water, Seamama freeze and drown their prey. On land, they are clumsy and slow. Their weak spots vary among individuals.
+
 """
 NAME bookshelf4.1 dialog
 
@@ -3227,25 +3236,28 @@ DLG r
 A Bookshelf. 
 The bookshelf is titled "creatures from P to T". 
 Taking out one of the books it reads: 
-The Seamama is a water elemental creature with the appearance of a snow white seal.   They have a high intelligence and strong will to protect their children. The emotional bond a Seamama has to its young is known to be one of the strongest in the North. If its child is disturbed, the Seamama will risk its life and hunt down the aggressor. When in the water, Seamama freeze and drown their prey. On land, they are clumsy and slow. Their weakspot varies among individual.
+The Seamama is a water elemental creature with the appearance of a snow white seal. They have a high intelligence and strong will to protect their children. The emotional bond a Seamama has to its young is known to be one of the strongest in the North. If its child is disturbed, the Seamama will risk its life and hunt down the aggressor. When in the water, Seamama freeze and drown their prey. On land, they are clumsy and slow. Their weak spots vary among individuals.
+
 """
 NAME bookshelf4.2 dialog
 
 DLG s
 """
 A Bookshelf. 
-The bookshelf is titled "creatures from U to Z". 
+The bookshelf is titled "Creatures from U to Z". 
 Taking out one of the books it reads: 
-The Vinploof is an Eastern monster with light and grass magic. They look like large dandelions with a round center body. Their mouths are so small, they are only able to eat pollen. Vinploofs have a water cup on their head that they use to carry water. The white fluffiness which cover half their bodies are called dandies. When a Vinploof feels threatened, it releases its dandies to cause allergic reactions. 
+The Vinploof is an Eastern monster with light and grass magic. They look like large dandelions with a round center body. Their mouths are so small, they are only able to eat pollen. Vinploofs also have a water cup on their head that they use to carry water. The white fluffiness which covers half their bodies are called dandies. When a Vinploof feels threatened, it releases its dandies to cause allergic reactions. 
+
 """
 NAME Booksehlf5.1 dialog
 
 DLG t
 """
 A Bookshelf. 
-The bookshelf is titled "creatures from U to Z". 
+The bookshelf is titled "Creatures from U to Z". 
 Taking out one of the books it reads: 
-The Vinploof is an Eastern monster with light and grass magic. They look like large dandelions with a round center body. Their mouths are so small, they are only able to eat pollen. Vinploofs have a water cup on their head that they use to carry water. The white fluffiness which cover half their bodies are called dandies. When a Vinploof feels threatened, it releases its dandies to cause allergic reactions. 
+The Vinploof is an Eastern monster with light and grass magic. They look like large dandelions with a round center body. Their mouths are so small, they are only able to eat pollen. Vinploofs also have a water cup on their head that they use to carry water. The white fluffiness which covers half their bodies are called dandies. When a Vinploof feels threatened, it releases its dandies to cause allergic reactions. 
+
 """
 NAME booksehfl5.2 dialog
 
@@ -3328,9 +3340,10 @@ DLG 1n
 """
 A bookshelf. It is filled with books about Insects. Taking one out it reads: 
 Teach your children not to play with the sand outside. I've traveled far and wide and have seen many foolish parents allow their children to play in the sand, South easterners especially. 
-On one of my trips, I had just stepped out of a nice South Western hotel when a child came running and screaming past me. The child had Luxers covering their hands and scattering up their hands. The child was of course blinded by the light creatures and ended up running into a pole. The child was alright but not without a heavy bill from the local medic. 
+On one of my trips, I had just stepped out of a nice South Western hotel when a child came running and screaming past me. The child had Luxers covering their hands and scattering up their arms. The child was of course blinded by the light the ants made and ended up running into a pole. The child was alright but not without a heavy bill from the local medic. 
 
-The book continues but you put away as it is of no use to you. 
+The book continues but you put it away as it is of no use to you. 
+
 """
 NAME sprite 1i dialog
 
@@ -3340,7 +3353,8 @@ A bookshelf. It is filled with books about Insects. Taking one out it reads:
 Teach your children not to play with the sand outside. I've traveled far and wide and have seen many foolish parents allow their children to play in the sand, South easterners especially. 
 On one of my trips, I had just stepped out of a nice South Western hotel when a child came running and screaming past me. The child had Luxers covering their hands and scattering up their hands. The child was of course blinded by the light creatures and ended up running into a pole. The child was alright but not without a heavy bill from the local medic. 
 
-The book continues but you put away as it is of no use to you. 
+The book continues but you put it away as it is of no use to you. 
+
 """
 NAME sprite 1j dialog
 
@@ -3422,6 +3436,10 @@ DLG 1y
 }
 """
 NAME locked exit 3
+
+DLG 1z
+
+NAME mike dialog 
 
 VAR a
 42
