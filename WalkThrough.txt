@@ -1,0 +1,16 @@
+Read the following only if you are stuck or wish to go through the game quickly.
+
+
+
+The goal of the game is to make a cooling sword to slay the momokoi in the beginning. This information is found in the house's library section.
+
+You gather gravellas(3 for each npc) to interact with pete for the keys to his house and to interact with Mike go into the center island in the pond. 
+The center island has 1 Foselia which you will need for a potion. 
+The pond has a few jillyblobs, you just need 1 for a potion. 
+In the house, the kitchen has 1 Leafline powder in the trash. 
+In the kitchen, there is also a spot to make a potion. You need 1 recipe, 1 jillyblob, 1 Foselia, and 1 leafline powder to create a cooling potion. 
+Upstairs, there is a workbench near the wall of the stairs. You need 1 sword, 1 cooling potion to use it. In the open box near it, there is a cooling recipe. 
+Upstairs, under the bed, there is a sword. 
+Gather the ingredients and recipe and use the kitchen's potion area to make a cooling potion, then go upstairs to use the workbench to put the cooling potion on the sword. 
+Finally, go to the momokoi to defeat it. 
+Once defeated, the land will change and going up will trigger the end screen. 
