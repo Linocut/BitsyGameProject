@@ -1,0 +1,16 @@
+﻿Momokoi 2.0
+Release Notes
+﻿
+Game: Momokoi 
+Creator: little_fifth
+Version: 2.0  
+Date: 1/22/23
+
+
+New features
+* ﻿You can now interact with a magnifying glass and paper inside the kitchen. This will allow you to check which ingredients you need or have from the recipe when you find it. 
+* There is now exposition in the beginning to create a narrative. 
+﻿
+Improvements (of existing features)
+* ﻿Walking now uses 1 square instead of multiple to prevent difficulty of moving from place to place. There are also arrows to guide the player to which square they can step on to move. 
+* The ending dialog was changed to fit the narrative and the Momokoi’s sound now plays when interacting with it.
